@@ -15,9 +15,6 @@ import org.apache.kafka.streams.kstream.*;
 @ApplicationScoped
 public class TopologyProducer{
 
-
-
-
 	@Produces
 	Topology createTopology(){
 		StreamsBuilder builder= new StreamsBuilder();
@@ -25,6 +22,5 @@ public class TopologyProducer{
 						     mapValues( t -> t.toUpperCase()).
 						     to("wc-out", Produced.with(Serdes.String(),Serdes.String()));
 		return builder.build();
-
 	}
 }
