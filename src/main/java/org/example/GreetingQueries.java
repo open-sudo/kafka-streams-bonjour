@@ -12,21 +12,20 @@ import org.apache.kafka.streams.kstream.*;
 import org.apache.kafka.streams.state.*;
 
 @ApplicationScoped
-public class Queries {
+public class GreetingQueries {
    @Inject
     KafkaStreams streams;
 
     public void hello() {
-
-ReadOnlyKeyValueStore<Integer, Long> store = streams
+          ReadOnlyKeyValueStore<Integer, Long> store = streams
             .store(StoreQueryParameters.fromNameAndType( 
                 "numbers", 
                 QueryableStoreTypes.keyValueStore() 
             ));
 
-store.all()
-     .forEachRemaining(row -> {
-          System.out.println(row.key + " - " + row.value); 
-       });
+          store.all()
+             .forEachRemaining(row -> {
+                  System.out.println(row.key + " - " + row.value); 
+          });
     }
 }

@@ -17,7 +17,7 @@ public class GreetingResource {
     KafkaStreams streams;
 
     @Inject
-    Queries queries;
+    GreetingQueries queries;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
